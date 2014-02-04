@@ -4,8 +4,11 @@
 
 
 <%- @products.each do |product| %>
-  <p><%= link_to "#{product[:name]}", "/products/#{product.id}" %></p>
-  <p><%= product[:description] %></p>
-  <p><%= product[:price_in_cents] %></p>
+
+
+  <p><strong>Product: </strong> <h2><%= link_to "#{product[:name]}", "/products/#{product.id}" %></h2></p>
+  <p><strong>Description:</strong> <%= product[:description] %></p>
+  <p><strong>Price:</strong> $<%= product.formatted_price%></p>
+  <p>_________________</p>
 
 <% end %>
