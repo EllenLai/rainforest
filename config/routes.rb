@@ -1,19 +1,22 @@
 Rainforest::Application.routes.draw do
-  get "reviews/show"
-  get "reviews/new"
-  get "reviews/edit"
-  get "sessions/new"
-  get "sessions/create"
-  get "sessions/destroy"
-  get "users/new"
-  get "users/create"
+  # get "reviews/show"
+  # get "reviews/new"
+  # get "reviews/edit"
+  # get "sessions/new"
+  # get "sessions/create"
+  # get "sessions/destroy"
+  # get "users/new"
+  # get "users/create"
   resources :products
   resources :users, :only => [:new, :create]
   resources :sessions, :only => [:new, :create, :destroy]
+
   resources :products do
-    resources :reviews, :except => [:index]
+    resources :reviews
   end
-end
+
+  root :to => "products#index"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -69,3 +72,4 @@ end
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+end

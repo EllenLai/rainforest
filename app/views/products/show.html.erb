@@ -1,61 +1,55 @@
-<%= link_to "Back to Products", products_url %> | <%= link_to "Edit", edit_product_path(@product) %> | <%= link_to "Delete", @product, :confirm => "Are you sure you want to delete this product?", :method => :delete %>
+ <%= link_to "back to all products", "/products" %>
+  <%= link_to "edit this product", "/products/#{@product.id}/edit" %>
+  <%= link_to "delete this product",@picture, :confirm => "are you sure you want to delete this product?", :method => :delete %>
 
-<p>
-	<strong>Name:</strong> 
-	<%= @product[:name] %>
-</p>
-<p>
-	<strong>Description:</strong>
-		<%= @product[:description] %>
-</p>
-<p>
-	<strong>Price:</strong>
-		$<%= @product.formatted_price%>
-</p>
+  <p><%= @product.name %></p>
+  <p><%= @product.description %></p>
+  <p>$<%= @product.formatted_price%></p>
 
-<% if current_user %>
+  <% if current_user %>
 
-  <h3>Reviews</h3>
+    <h4>New Review</h4>
 
-  <p>Reviews for <%= @product.name %></p>
+    <%= form_for([@product, @review]) do |f| %>
+      <% if @review.errors.any? %>
+        <div id= "error_explanation">
+          <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-  <% @product.reviews.each do |review| %>
-    <p>
-      <%= review.comment %>
-      <br>
-      <% if review.user != nil %>
-        <em> by <%= review.user.email %></em>
-        Added on: <%= review.created_at %>
+          <ul>
+            <% @review.errors.full_messages.each do |msg| %>
+              <li> <%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-    </p>
-  <% end %>
 
-<% end %>
-
-  <h4>New Review</h4>
-
-  <%= form_for([@product, @review]) do |f| %>
-    <% if @review.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
-        <ul>
-        <% @review.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
+      <div class= "field">
+        <%= f.label :comment %><br/>
+        <%= f.text_area :comment %>
+      </div>
+      <div class= "actions">
+        <%= f.submit %>
       </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :comment %><br />
-      <%= f.text_area :comment %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
- 
-  <% end %>
+    <% else %>
+      <p>Please <%= link_to "log in", new_session_path %> to add a review.</p>
+    <% end %>
+
+    <h3>Reviews</h3>
+
+    <p>Reviews for <%= @product.name %></p>
+
+    <% @product.reviews.each do |review| %>
+      <p>
+        <%= review.comment %>
+        <br>
+        <% if  review.user != nil %>
+        <em> by <%= review.user.name %></em>
+          Added on : <%= review.created_at %>
+        <% end %>
+      </p>
+    <% end %>
 
 
 

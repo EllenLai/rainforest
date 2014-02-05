@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-   before_filter :ensure_logged_in, :only => [:show]
-   
+   before_filter :ensure_logged_in, :only => [:show, :new]
+
   def index
   	@products = Product.all
   end
@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
   	@product = Product.find(params[:id])
   	@product.destroy
