@@ -12,3 +12,50 @@
 	<strong>Price:</strong>
 		$<%= @product.formatted_price%>
 </p>
+
+<% if current_user %>
+
+  <h3>Reviews</h3>
+
+  <p>Reviews for <%= @product.name %></p>
+
+  <% @product.reviews.each do |review| %>
+    <p>
+      <%= review.comment %>
+      <br>
+      <% if review.user != nil %>
+        <em> by <%= review.user.email %></em>
+        Added on: <%= review.created_at %>
+      <% end %>
+    </p>
+  <% end %>
+
+<% end %>
+
+  <h4>New Review</h4>
+
+  <%= form_for([@product, @review]) do |f| %>
+    <% if @review.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+        <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :comment %><br />
+      <%= f.text_area :comment %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+ 
+  <% end %>
+
+
+
