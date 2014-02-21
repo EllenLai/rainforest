@@ -7,7 +7,9 @@ Rainforest::Application.routes.draw do
   # get "sessions/destroy"
   # get "users/new"
   # get "users/create"
-  resources :products
+  # resources :products do
+  #   get 'search', on: :collection
+  # end
   resources :users, :only => [:new, :create]
   resources :sessions, :only => [:new, :create, :destroy]
 

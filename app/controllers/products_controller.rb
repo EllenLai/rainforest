@@ -1,8 +1,25 @@
 class ProductsController < ApplicationController
-   before_filter :ensure_logged_in, :only => [:show, :new]
+   before_filter :ensure_logged_in, :only => [:new, :edit, :destroy]
 
   def index
-  	@products = Product.all
+    @products = if params[:search]
+      Product.where("name LIKE ?", "%#{params[:search]}%")
+    else
+  	 Product.all
+  end
+# end
+
+#   def search
+#     @products = Product.where("name LIKE ?", "%#{params[:search]}%")
+#     render @products
+
+    # if request.xhr?
+    #   return render @prodcuts
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

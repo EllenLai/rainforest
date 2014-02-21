@@ -1,14 +1,54 @@
-<h1>Products (<%= @products.length %>)</h1>
-<%= link_to "New Product", "/products/new" %>
+<!DOCTTYPE  html>
+	<html>
+		<head>
+			<body>
+				<header><h1><title>Products (<%= @products.length %>)</title></h1>
+				<%= link_to "New Product", "/products/new" %>
+		</head>
+	</header>
+
 
 
 
 <%- @products.each do |product| %>
 
 
-  <p><strong>Product: </strong> <h2><%= link_to "#{product[:name]}", "/products/#{product.id}" %></h2></p>
+ <!--  <div class"col2"><p><strong>Product: </strong> <h2><%= link_to "#{product[:name]}", "/products/#{product.id}" %></h2></p></div>
   <p><strong>Description:</strong> <%= product[:description] %></p>
   <p><strong>Price:</strong> $<%= product.formatted_price%></p>
-  <p>_________________</p>
+  <p>_________________</p> -->
 
 <% end %>
+
+
+
+			<div class"col2">
+				<ul class="main-nav">
+					<li class="current"><a href="index.html">Home</a></li>
+					<li><a href="about.html">About Me</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+		</header>
+
+
+
+		</div>
+
+
+<%= form_tag products_path, method: :get, authentication: false, id: 'search-form' do  %>
+	<%= text_field_tag :search, params[:search] %>
+	<%= submit_tag "Search" %>
+<% end %>
+
+<div id="products">
+<%= render @products %>
+</div>
+
+
+
+
+	</section>
+	</body>
+</html>

@@ -1,6 +1,6 @@
- <%= link_to "back to all products", "/products" %>
-  <%= link_to "edit this product", "/products/#{@product.id}/edit" %>
-  <%= link_to "delete this product",@picture, :confirm => "are you sure you want to delete this product?", :method => :delete %>
+ <%= link_to "Back to all products", "/products" %>
+  <%= link_to "Edit this product", "/products/#{@product.id}/edit" %>
+  <%= link_to "Delete this product",@picture, :confirm => "are you sure you want to delete this product?", :method => :delete %>
 
   <p><%= @product.name %></p>
   <p><%= @product.description %></p>

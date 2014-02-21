@@ -1,3 +1,106 @@
+* {  /*star means its for the whole entire page*/
+	margin: 0; /*resetting the page so it's the same across browers*/
+	padding: 0;
+	-webkit-box-sizing: border-box; /* ensuring that past version of browsers uses these experiemental features, whereas the new browsers already have them built in natively*/
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;  /* default is content-box */
+}
+
+.frame{
+	width: 100%;
+
+}
+
+.col1{
+	width : 100%;
+}
+
+.col2 {
+	width: 50%;
+}
+
+.col3 {
+	width: 33.333333%;
+}
+
+.col66 {
+	width: 66.66%;
+}
+
+.col25 {
+	width: 25%;
+}
+
+.col75 {
+	width: 75%;
+}
+
+[class*='col'] {  /* pattern matcher, it will look for classes with 'col' inside */
+	float: left;
+	padding: 0.3em;
+}
+
+.frame:after {     /* forces our large sections to wrap underneath each other */
+	content: "";
+	display: bock;
+	clear: both;
+}
+
+/*CUSTOM STYLE*/
+
+body {
+	background-color: #7F2626;
+	font-family: Helvetica
+}
+
+header {
+	background-color: #563CBF;
+	height: 60px;
+	padding-top: 8px;
+}
+
+header, header a, header a:visited {
+	font-family: 'Rock Salt', cursive;
+	text-decoration: none;
+	color: black;
+}
+
+body{
+	background-color: white;
+}
+
+.main-nav {
+	list-style-type: none;
+	float: right;
+}
+
+
+.main-nav li{
+	display: inline;
+}
+
+.frame{
+	width: 1024px;
+	margin: 0 auto;
+}
+
+.current a, .current a:visited {
+	color: #17A697;
+}
+
+.main-content {
+	text-align: center;
+	color: #638CA6;
+}
+
+.main-content h1 {
+	color: #D93240;
+}
+
+.round {
+	height: 300px;
+	border-radius: 150px;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
