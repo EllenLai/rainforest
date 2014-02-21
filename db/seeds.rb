@@ -5,3 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.destroy_all
+Product.destroy_all
+
+	User.create!({
+	email: "nelle@email.com",
+	name: "Nelle",
+	password: "nelle",
+	password_confirmation: "nelle"
+	}
+)
+
+100.times do |i|
+
+Product.create({
+	name: "Product#{i}",
+	description: "Description#{i}",
+	price_in_cents: i
+	}
+)
+
+end

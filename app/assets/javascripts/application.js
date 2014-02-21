@@ -30,7 +30,18 @@ $(document).ready(function(){
 
 			$.getScript('/products?search=' + searchValue);
 		});
-	});
+
+
+
+     $(window).scroll(function() {
+      var url = $('.pagination span.next').children().attr('href');
+      if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 200) {
+        $('.pagination').text("Fetching more products...");
+         return $.getScript(url);
+      }
+  	});
+});
+
 
 
 	// function display_search_results(){

@@ -7,47 +7,42 @@
 		</head>
 	</header>
 
-
-
-
-<%- @products.each do |product| %>
-
-
- <!--  <div class"col2"><p><strong>Product: </strong> <h2><%= link_to "#{product[:name]}", "/products/#{product.id}" %></h2></p></div>
-  <p><strong>Description:</strong> <%= product[:description] %></p>
-  <p><strong>Price:</strong> $<%= product.formatted_price%></p>
-  <p>_________________</p> -->
-
-<% end %>
-
-
-
 			<div class"col2">
 				<ul class="main-nav">
 					<li class="current"><a href="index.html">Home</a></li>
 					<li><a href="about.html">About Me</a></li>
 				</ul>
 			</div>
-		</div>
-	</div>
-		</header>
 
 
+<center><img src="http://www.domonation.com/user_images/download/8970" width="450" height="300" /></center>
 
-		</div>
+<hr />
 
+<p id="products-pagination"><%= paginate @products %></p>
+<br>
 
 <%= form_tag products_path, method: :get, authentication: false, id: 'search-form' do  %>
 	<%= text_field_tag :search, params[:search] %>
 	<%= submit_tag "Search" %>
 <% end %>
+<br>
 
-<div id="products">
-<%= render @products %>
-</div>
+<ul>
+		<div id="products">
+			<%= render @products %>
+	</div>
+</ul>
 
+<br>
 
+ <p id="products-pagination"><%= paginate @products %></p>
 
+<br><br>
+
+<marquee><img src="http://c4gnation.com/NATION_Showcase/plog-content/images/emoticons-and-animations/gifs-and-pngs/domo.gif"/></marquee>
+
+<br><br><br>
 
 	</section>
 	</body>

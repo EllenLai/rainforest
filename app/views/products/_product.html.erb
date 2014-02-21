@@ -1,6 +1,6 @@
 <%= link_to product_path(product.id) do %>
 <h2>
-<%= number_to_currency(product.formatted_price) %>
+	$<%= product.formatted_price %>
 <%= product.name %>
 </h2>
 
